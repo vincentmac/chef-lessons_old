@@ -7,7 +7,7 @@ version          "0.4.2"
 
 depends          "git"
 depends          "zsh"
-depends          "users"
+depends          "user"
 
 %w( ubuntu debian
     centos redhat fedora ).each do |os|
