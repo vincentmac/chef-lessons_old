@@ -1,4 +1,4 @@
 {"run_list":[
     "recipe[nginx::default]"
-  , "recipe[oh-my-zsh::default]"
+  , "recipe[oh-my-zsh::ubuntu]"
 ]}
