@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: nginx
-# Recipe:: default
+# Recipe:: commons
 # Author:: AJ Christensen <aj@junglist.gen.nz>
 #
 # Copyright 2008-2012, Opscode, Inc.
@@ -18,25 +18,6 @@
 # limitations under the License.
 #
 
-include_recipe 'nginx::ohai_plugin'
-
-case node['nginx']['install_method']
-when 'source'
-  include_recipe 'nginx::source'
-when 'package'
-  case node['platform']
-  when 'redhat','centos','scientific','amazon','oracle'
-    include_recipe 'yum::epel'
-  end
-  package node['nginx']['package_name']
-  service 'nginx' do
-    supports :status => true, :restart => true, :reload => true
-    action :enable
-  end
-  include_recipe 'nginx::commons'
-end
-
-service 'nginx' do
-  supports :status => true, :restart => true, :reload => true
-  action :start
-end
+include_recipe "nginx::commons_dir"
+include_recipe "nginx::commons_script"
+include_recipe "nginx::commons_conf"
