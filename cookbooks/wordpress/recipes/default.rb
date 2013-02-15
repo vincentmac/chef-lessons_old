@@ -35,6 +35,7 @@ end
 if node.has_key?("ec2")
   server_fqdn = node['ec2']['public_hostname']
   puts "SERVER ON EC2: #{node['ec2']['public_hostname']}"
+  puts "PLATFORM FAMILY: #{node['platform_family']}"
 else
   server_fqdn = node['fqdn']
 end
