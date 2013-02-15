@@ -103,8 +103,8 @@ end
 ###
 
 # General settings
-default['apache']['listen_ports'] = ["80"]
-default['apache']['contact'] = "ops@example.com"
+default['apache']['listen_ports'] = ["4000"]
+default['apache']['contact'] = "vincent@avant.io"
 default['apache']['timeout'] = 300
 default['apache']['keepalive'] = "On"
 default['apache']['keepaliverequests'] = 100

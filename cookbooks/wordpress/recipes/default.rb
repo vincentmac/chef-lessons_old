@@ -19,6 +19,7 @@
 
 include_recipe "apache2"
 include_recipe "mysql::server"
+# include_recipe "mysql::server_ec2"
 include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
@@ -33,6 +34,7 @@ end
 
 if node.has_key?("ec2")
   server_fqdn = node['ec2']['public_hostname']
+  puts "SERVER ON EC2: #{node['ec2']['public_hostname']}"
 else
   server_fqdn = node['fqdn']
 end
@@ -78,6 +80,7 @@ execute "untar-wordpress" do
 end
 
 execute "mysql-install-wp-privileges" do
+  # command "/usr/bin/mysql -u root -p\"#{node['mysql']['server_root_password']}\" < #{node['mysql']['conf_dir']}/wp-grants.sql"
   command "/usr/bin/mysql -u root -p\"#{node['mysql']['server_root_password']}\" < #{node['mysql']['conf_dir']}/wp-grants.sql"
   action :nothing
 end
@@ -96,7 +99,9 @@ template "#{node['mysql']['conf_dir']}/wp-grants.sql" do
 end
 
 execute "create #{node['wordpress']['db']['database']} database" do
+  # command "/usr/bin/mysqladmin -u root -p\"#{node['mysql']['server_root_password']}\" create #{node['wordpress']['db']['database']}"
   command "/usr/bin/mysqladmin -u root -p\"#{node['mysql']['server_root_password']}\" create #{node['wordpress']['db']['database']}"
+  # command "/usr/bin/mysqladmin -u root -p #{node['mysql']['server_root_password']} create #{node['wordpress']['db']['database']}"
   not_if do
     # Make sure gem is detected if it was just installed earlier in this recipe
     require 'rubygems'

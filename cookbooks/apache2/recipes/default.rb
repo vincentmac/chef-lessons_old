@@ -203,6 +203,7 @@ end
 
 template "#{node['apache']['dir']}/sites-available/default" do
   source "default-site.erb"
+  # source "lessons-site.erb"
   owner "root"
   group node['apache']['root_group']
   mode 00644

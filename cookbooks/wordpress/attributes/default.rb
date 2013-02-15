@@ -21,7 +21,8 @@
 # General settings
 default['wordpress']['version'] = "latest"
 default['wordpress']['checksum'] = ""
-default['wordpress']['dir'] = "/var/www/wordpress"
+# default['wordpress']['dir'] = "/var/www/wordpress"
+default['wordpress']['dir'] = "/var/www/api.lessonsforlifeproject.com"
 default['wordpress']['db']['database'] = "wordpressdb"
 default['wordpress']['db']['user'] = "wordpressuser"
-default['wordpress']['server_aliases'] = [node['fqdn']]
+default['wordpress']['server_aliases'] = [node['fqdn'], 'api.lessonsforlifeproject.com', '127.0.0.1', 'localhost' ]

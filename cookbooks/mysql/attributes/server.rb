@@ -232,6 +232,10 @@ default['mysql']['log_dir'] = node['mysql']['data_dir']
 default['mysql']['log_files_in_group'] = false
 default['mysql']['innodb_status_file'] = false
 
+# default['mysql']['server_debian_password'] = "Kick@$$!"
+# default['mysql']['server_root_password']   = "Kick@$$!"
+# default['mysql']['server_repl_password']   = "Kick@$$!"
+
 unless node['platform_family'] && node['platform_version'].to_i < 6
   # older RHEL platforms don't support these options
   default['mysql']['tunable']['event_scheduler']  = 0

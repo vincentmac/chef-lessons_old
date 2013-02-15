@@ -1,4 +1,12 @@
-{"run_list":[
-    "recipe[nginx::default]"
+{
+  "mysql": {
+    "server_root_password": "thisisalongpasswordforlessonsforlifeproject",
+    "server_repl_password": "thisisalongpasswordforlessonsforlifeproject",
+    "server_debian_password": "thisisalongpasswordforlessonsforlifeproject"
+  },
+  "run_list":[
+    "recipe[build-essential::default]"
+  , "recipe[nginx::default]"
   , "recipe[oh-my-zsh::ubuntu]"
+  , "recipe[wordpress::default]"
 ]}
